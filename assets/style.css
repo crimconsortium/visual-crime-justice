@@ -112,7 +112,7 @@ article a { color: var(--link); text-decoration: underline; text-decoration-thic
 article a:hover, article a:focus { color: var(--link-hover); }
 
 article blockquote {
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid var(--text);
   margin: 1.25rem 0;
   padding: 0.25rem 1rem;
   background: var(--bg-alt);
@@ -167,7 +167,7 @@ hr {
 .callout {
   border: 1px solid var(--border);
   background: var(--bg-alt);
-  border-left: 4px solid var(--accent);
+  border-left: 4px solid var(--text);
   padding: 0.75rem 1rem;
   margin: 1.25rem 0;
   font-size: 0.95rem;
