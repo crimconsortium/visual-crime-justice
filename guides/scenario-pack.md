@@ -1,7 +1,7 @@
 # Scenario Pack — Visual Crime & Justice
 
 **Discussion scenarios with model responses**
-*Published by the CrimRxiv Consortium · CC BY 4.0*
+*By Tara Abrahams and Scott Jacques · Supported by [CrimRxiv Consortium](https://www.crimrxiv.com/) · CC BY 4.0*
 
 These scenarios are designed for newsroom training, police academy and in-service sessions, journalism and criminal justice classrooms, and community discussions. They are realistic composites drawn from documented cases and current research. They are not legal advice.
 
@@ -124,4 +124,4 @@ These scenarios work best when participants:
 - Discuss in small groups and report out before consulting the cited sources
 - Compare their reasoning to current peer-reviewed research, not only to intuition
 
-Updates to this pack are released quarterly by the [CrimRxiv Consortium](https://www.crimrxiv.com/).
+Updates to this pack are released quarterly by Tara Abrahams and Scott Jacques, supported by the [CrimRxiv Consortium](https://www.crimrxiv.com/).

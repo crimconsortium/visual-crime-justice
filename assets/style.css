@@ -9,7 +9,7 @@
   --link: #0b4f8a;          /* contrast 7.8:1 on #fff */
   --link-hover: #062f54;
   --border: #d6d6d2;
-  --accent: #8a1c1c;        /* CrimRxiv-adjacent maroon */
+  --accent: #f68212;        /* Brand orange */
   --code-bg: #f0eee8;
   --max-width: 760px;
 }
@@ -42,7 +42,7 @@ body {
   display: inline-block;
   padding: 0.5rem 1rem;
   background: var(--accent);
-  color: #fff;
+  color: #1a1a1a;
   text-decoration: none;
 }
 

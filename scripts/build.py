@@ -47,7 +47,7 @@ def page(title: str, body_html: str, current: str, description: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{_html.escape(title)} — Visual Crime &amp; Justice Resource</title>
   <meta name="description" content="{_html.escape(description)}">
-  <meta name="theme-color" content="#8a1c1c">
+  <meta name="theme-color" content="#f68212">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -70,8 +70,8 @@ def page(title: str, body_html: str, current: str, description: str) -> str:
     <p>Last updated: <time datetime="{UPDATED}">{UPDATED}</time></p>
     <p>Open access. Licensed under
        <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">CC BY 4.0</a>.
-       Free to use, share, and adapt with attribution to the
-       <a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a>.</p>
+       Free to use, share, and adapt with attribution to Tara Abrahams and Scott Jacques
+       (supported by <a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a>).</p>
     <p>Source on
        <a href="https://github.com/crimconsortium/visual-crime-justice">GitHub</a>.</p>
   </footer>
@@ -187,7 +187,8 @@ public on <a href="https://github.com/crimconsortium/visual-crime-justice">GitHu
         current="index.html",
         description=(
             "Open-access guides on the ethical and evidentiary use of images in crime, "
-            "policing, and journalism. CrimRxiv Consortium."
+            "policing, and journalism. By Tara Abrahams and Scott Jacques, supported by "
+            "CrimRxiv Consortium."
         ),
     )
     (OUT_DIR / "index.html").write_text(html, encoding="utf-8")
@@ -200,10 +201,10 @@ def build_about() -> None:
 <p class="meta">Last updated {UPDATED}</p>
 
 <p>The <strong>Visual Crime &amp; Justice Resource</strong> is an open-access,
-evidence-based practitioner resource produced by the
-<a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a>. It is written for three
-audiences: law enforcement and public safety professionals, journalists and
-photojournalists who cover crime, and the general public.</p>
+evidence-based practitioner resource produced by Tara Abrahams and Scott Jacques,
+supported by the <a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a>. It is
+written for three audiences: law enforcement and public safety professionals,
+journalists and photojournalists who cover crime, and the general public.</p>
 
 <h2>Why we built it</h2>
 <p>Visual evidence — body-worn camera video, bystander recordings, crime-scene
@@ -225,7 +226,8 @@ with a summary of what changed and why.</p>
 <p>All content is released under
 <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons
 Attribution 4.0</a>. You may use, share, and adapt this material with attribution to
-the CrimRxiv Consortium and a link back to this site.</p>
+Tara Abrahams and Scott Jacques (supported by the CrimRxiv Consortium) and a link
+back to this site.</p>
 
 <h2>Contact &amp; contributions</h2>
 <p>Open an issue or pull request on
