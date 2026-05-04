@@ -109,7 +109,7 @@ def page(title: str, body_html: str, current: str, description: str) -> str:
        Free to use, share, and adapt with attribution to Tara Abrahams and Scott Jacques
        (supported by <a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a>).</p>
     <p>Source on
-       <a href="https://github.com/crimconsortium/visual-crime-justice">GitHub</a>.</p>
+       <a href="https://github.com/crimconsortium/image-ethics">GitHub</a>.</p>
   </footer>
   __THEME_TOGGLE_SCRIPT__
 </body>
@@ -210,7 +210,7 @@ Produced by Tara Abrahams and Scott Jacques, supported by <a href="https://www.c
 <p>Every quarter, we review new peer-reviewed articles, policy documents, journalism
 ethics guidelines, legal rulings, and notable case studies, then update each guide and
 the scenario pack. The full source — including a research log of sources consulted — is
-public on <a href="https://github.com/crimconsortium/visual-crime-justice">GitHub</a>.</p>
+public on <a href="https://github.com/crimconsortium/image-ethics">GitHub</a>.</p>
 
 <h2>Guiding principles</h2>
 <ul>
@@ -259,7 +259,7 @@ to primary sources.</p>
 documents, journalism ethics guidance, legal rulings, and notable case studies;
 (b) update each guide and the scenario pack to incorporate new findings; (c)
 rebuild the site; and (d) commit changes to the
-<a href="https://github.com/crimconsortium/visual-crime-justice">public repository</a>
+<a href="https://github.com/crimconsortium/image-ethics">public repository</a>
 with a summary of what changed and why.</p>
 
 <h2>License</h2>
@@ -271,7 +271,7 @@ back to this site.</p>
 
 <h2>Contact &amp; contributions</h2>
 <p>Open an issue or pull request on
-<a href="https://github.com/crimconsortium/visual-crime-justice">GitHub</a> to
+<a href="https://github.com/crimconsortium/image-ethics">GitHub</a> to
 suggest sources, propose corrections, or contribute new scenarios.</p>
 """
     html = page(

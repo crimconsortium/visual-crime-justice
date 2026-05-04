@@ -2,7 +2,7 @@
 
 Open-access, evidence-based practitioner resource on the ethical and evidentiary use of images in crime, policing, and journalism. Produced by Tara Abrahams and Scott Jacques, supported by [CrimRxiv Consortium](https://www.crimrxiv.com/).
 
-**Site:** https://crimconsortium.github.io/visual-crime-justice/
+**Site:** https://crimconsortium.github.io/image-ethics/
 **License:** [CC BY 4.0](LICENSE)
 
 ## What's here
