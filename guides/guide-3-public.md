@@ -1,7 +1,7 @@
 # Guide 3 — How Images Shape Public Understanding of Crime
 
 **A guide for everyone**
-*By Tara Abrahams and Scott Jacques · Supported by [CrimRxiv Consortium](https://www.crimrxiv.com/) · CC BY 4.0*
+*By Tara Abrahams and Scott Jacques · Supported by [CrimRxiv Consortium](https://www.crimrxiv.com/) · CC BY 4.0.*
 
 ---
 

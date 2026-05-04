@@ -1,7 +1,7 @@
 # Scenario Pack — Image Ethics in Crime & Justice
 
 **Discussion scenarios with model responses**
-*By Tara Abrahams and Scott Jacques · Supported by [CrimRxiv Consortium](https://www.crimrxiv.com/) · CC BY 4.0*
+*By Tara Abrahams and Scott Jacques · Supported by [CrimRxiv Consortium](https://www.crimrxiv.com/) · CC BY 4.0.*
 
 These scenarios are designed for newsroom training, police academy and in-service sessions, journalism and criminal justice classrooms, and community discussions. They are realistic composites drawn from documented cases and current research. They are not legal advice.
 

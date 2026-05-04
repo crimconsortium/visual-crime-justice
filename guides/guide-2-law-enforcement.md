@@ -1,7 +1,7 @@
 # Guide 2 — Visual Evidence and Policing
 
 **Body-worn cameras, citizen footage, and crime scene imagery — a guide for law enforcement**
-*By Tara Abrahams and Scott Jacques · Supported by [CrimRxiv Consortium](https://www.crimrxiv.com/) · CC BY 4.0*
+*By Tara Abrahams and Scott Jacques · Supported by [CrimRxiv Consortium](https://www.crimrxiv.com/) · CC BY 4.0.*
 
 ---
 
