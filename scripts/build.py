@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Visual Crime & Justice Resource site.
+"""Build the Image Ethics in Crime & Justice site.
 
 - Converts /guides/*.md to HTML pages with shared header, nav, footer.
 - Generates downloadable PDFs of each guide using the same HTML + print CSS.
@@ -35,26 +35,63 @@ NAV = [
 ]
 
 
+THEME_PRE_SCRIPT = """<script>
+  // Apply saved or system theme before paint to avoid a flash.
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>"""
+
+THEME_TOGGLE_SCRIPT = """<script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+    function sync() {
+      var t = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      btn.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
+    }
+    sync();
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    });
+  })();
+</script>"""
+
+
 def page(title: str, body_html: str, current: str, description: str) -> str:
     nav_html = "".join(
         f'<li><a href="{href}"{" aria-current=\"page\"" if href == current else ""}>{label}</a></li>'
         for href, label in NAV
     )
-    return f"""<!doctype html>
+    html = f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{_html.escape(title)} — Visual Crime &amp; Justice Resource</title>
+  <title>{_html.escape(title)} — Image Ethics in Crime &amp; Justice</title>
   <meta name="description" content="{_html.escape(description)}">
   <meta name="theme-color" content="#f68212">
   <link rel="stylesheet" href="assets/style.css">
+  __THEME_PRE_SCRIPT__
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site" role="banner">
     <div class="inner">
-      <h1><a href="index.html">Visual Crime &amp; Justice Resource</a></h1>
+      <h1><a href="index.html">Image Ethics in Crime &amp; Justice</a></h1>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <span class="label-light" aria-hidden="true">Dark mode</span>
+        <span class="label-dark" aria-hidden="true">Light mode</span>
+      </button>
     </div>
   </header>
   <nav class="primary" role="navigation" aria-label="Primary">
@@ -74,9 +111,13 @@ def page(title: str, body_html: str, current: str, description: str) -> str:
     <p>Source on
        <a href="https://github.com/crimconsortium/visual-crime-justice">GitHub</a>.</p>
   </footer>
+  __THEME_TOGGLE_SCRIPT__
 </body>
 </html>
 """
+    return (html
+            .replace("__THEME_PRE_SCRIPT__", THEME_PRE_SCRIPT)
+            .replace("__THEME_TOGGLE_SCRIPT__", THEME_TOGGLE_SCRIPT))
 
 
 def md_to_html(md_text: str) -> tuple[str, str]:
@@ -112,7 +153,7 @@ def build_guide(md_path: Path, out_name: str, description: str) -> None:
 
 def build_index() -> None:
     body = f"""
-<h1>Visual Crime &amp; Justice Resource</h1>
+<h1>Image Ethics in Crime &amp; Justice</h1>
 <p class="meta">Last updated {UPDATED}</p>
 <p>An open-access, evidence-based practitioner resource on the ethical and evidentiary
 use of images in crime, policing, and journalism. Free to use, share, and adapt under
@@ -120,7 +161,7 @@ use of images in crime, policing, and journalism. Free to use, share, and adapt 
 Produced by Tara Abrahams and Scott Jacques, supported by <a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a>.</p>
 
 <div class="callout">
-  Written for three audiences: journalists and photojournalists, law enforcement and
+  Written for three audiences: journalists, law enforcement and
   public safety professionals, and the general public. Updated quarterly with new
   peer-reviewed research, policy, and case practice.
 </div>
@@ -128,7 +169,7 @@ Produced by Tara Abrahams and Scott Jacques, supported by <a href="https://www.c
 <h2>Guides</h2>
 <div class="cards">
   <div class="card">
-    <h3>Guide 1 — Journalists &amp; Photojournalists</h3>
+    <h3>Guide 1 — Journalists</h3>
     <p>Ethical use of images in crime reporting: victims, bodycam footage, citizen
        video, and AI-generated imagery.</p>
     <p class="actions">
@@ -199,11 +240,11 @@ def build_about() -> None:
 <h1>About this resource</h1>
 <p class="meta">Last updated {UPDATED}</p>
 
-<p>The <strong>Visual Crime &amp; Justice Resource</strong> is an open-access,
+<p><strong>Image Ethics in Crime &amp; Justice</strong> is an open-access,
 evidence-based practitioner resource produced by Tara Abrahams and Scott Jacques,
 supported by the <a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a>. It is
 written for three audiences: law enforcement and public safety professionals,
-journalists and photojournalists who cover crime, and the general public.</p>
+journalists who cover crime, and the general public.</p>
 
 <h2>Why we built it</h2>
 <p>Visual evidence — body-worn camera video, bystander recordings, crime-scene
@@ -237,7 +278,7 @@ suggest sources, propose corrections, or contribute new scenarios.</p>
         "About",
         body,
         current="about.html",
-        description="About the Visual Crime & Justice Resource and how it is maintained.",
+        description="About Image Ethics in Crime & Justice and how it is maintained.",
     )
     (OUT_DIR / "about.html").write_text(html, encoding="utf-8")
     print("  built about.html")
@@ -250,7 +291,7 @@ def main() -> None:
     build_guide(
         GUIDES_DIR / "guide-1-journalists.md",
         "guide-1-journalists.html",
-        "Ethical use of images in crime reporting for journalists and photojournalists.",
+        "Ethical use of images in crime reporting for journalists.",
     )
     build_guide(
         GUIDES_DIR / "guide-2-law-enforcement.md",

@@ -1,4 +1,4 @@
-# Research Log — Visual Crime & Justice Resource
+# Research Log — Image Ethics in Crime & Justice
 
 **Cycle:** May 2026 (initial build)
 

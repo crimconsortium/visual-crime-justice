@@ -1,6 +1,6 @@
 # Guide 1 — Ethical Use of Images in Crime Reporting
 
-**A practitioner guide for journalists and photojournalists**
+**A practitioner guide for journalists**
 *By Tara Abrahams and Scott Jacques · Supported by [CrimRxiv Consortium](https://www.crimrxiv.com/) · CC BY 4.0*
 
 ---

@@ -3,16 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Guide 1 — Ethical Use of Images in Crime Reporting — Visual Crime &amp; Justice Resource</title>
-  <meta name="description" content="Ethical use of images in crime reporting for journalists and photojournalists.">
+  <title>Guide 1 — Ethical Use of Images in Crime Reporting — Image Ethics in Crime &amp; Justice</title>
+  <meta name="description" content="Ethical use of images in crime reporting for journalists.">
   <meta name="theme-color" content="#f68212">
   <link rel="stylesheet" href="assets/style.css">
+  <script>
+  // Apply saved or system theme before paint to avoid a flash.
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site" role="banner">
     <div class="inner">
-      <h1><a href="index.html">Visual Crime &amp; Justice Resource</a></h1>
+      <h1><a href="index.html">Image Ethics in Crime &amp; Justice</a></h1>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <span class="label-light" aria-hidden="true">Dark mode</span>
+        <span class="label-dark" aria-hidden="true">Light mode</span>
+      </button>
     </div>
   </header>
   <nav class="primary" role="navigation" aria-label="Primary">
@@ -21,7 +36,7 @@
   <main id="main" role="main">
     <article>
       <p class="meta">Last updated 2026-05-04 · <a href="pdfs/guide-1-journalists.pdf">Download PDF</a></p><h1 id="guide-1-ethical-use-of-images-in-crime-reporting">Guide 1 — Ethical Use of Images in Crime Reporting</h1>
-<p><strong>A practitioner guide for journalists and photojournalists</strong>
+<p><strong>A practitioner guide for journalists</strong>
 <em>By Tara Abrahams and Scott Jacques · Supported by <a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a> · CC BY 4.0</em></p>
 <hr />
 <h2 id="why-this-guide-exists">Why this guide exists</h2>
@@ -120,5 +135,23 @@
     <p>Source on
        <a href="https://github.com/crimconsortium/visual-crime-justice">GitHub</a>.</p>
   </footer>
+  <script>
+  (function () {
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+    var root = document.documentElement;
+    function sync() {
+      var t = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      btn.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
+    }
+    sync();
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      sync();
+    });
+  })();
+</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-# Scenario Pack — Visual Crime & Justice
+# Scenario Pack — Image Ethics in Crime & Justice
 
 **Discussion scenarios with model responses**
 *By Tara Abrahams and Scott Jacques · Supported by [CrimRxiv Consortium](https://www.crimrxiv.com/) · CC BY 4.0*
