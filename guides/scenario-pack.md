@@ -124,4 +124,4 @@ These scenarios work best when participants:
 - Discuss in small groups and report out before consulting the cited sources
 - Compare their reasoning to current peer-reviewed research, not only to intuition
 
-Updates to this pack are released quarterly by Tara Abrahams and Scott Jacques, supported by the [CrimRxiv Consortium](https://www.crimrxiv.com/).
+Updates to this pack are released quarterly by Tara Abrahams and Scott Jacques, supported by [CrimRxiv Consortium](https://www.crimrxiv.com/).

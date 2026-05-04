@@ -54,7 +54,6 @@ def page(title: str, body_html: str, current: str, description: str) -> str:
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site" role="banner">
     <div class="inner">
-      <div class="brand">CrimRxiv Consortium</div>
       <h1><a href="index.html">Visual Crime &amp; Justice Resource</a></h1>
     </div>
   </header>
@@ -226,7 +225,7 @@ with a summary of what changed and why.</p>
 <p>All content is released under
 <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons
 Attribution 4.0</a>. You may use, share, and adapt this material with attribution to
-Tara Abrahams and Scott Jacques (supported by the CrimRxiv Consortium) and a link
+Tara Abrahams and Scott Jacques (supported by CrimRxiv Consortium) and a link
 back to this site.</p>
 
 <h2>Contact &amp; contributions</h2>
