@@ -118,7 +118,7 @@ def build_index() -> None:
 <p>An open-access, evidence-based practitioner resource on the ethical and evidentiary
 use of images in crime, policing, and journalism. Free to use, share, and adapt under
 <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
-Produced by the <a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a>.</p>
+Produced by Tara Abrahams and Scott Jacques, supported by <a href="https://www.crimrxiv.com/">CrimRxiv Consortium</a>.</p>
 
 <div class="callout">
   Written for three audiences: journalists and photojournalists, law enforcement and
