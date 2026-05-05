@@ -234,11 +234,192 @@ a:focus-visible, button:focus-visible {
   outline-offset: 2px;
 }
 
+/* ======================================================================
+   Scenario pack interactive toolbar + scenarios
+   ====================================================================== */
+
+.scenario-toolbar {
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  margin: 1.25rem 0;
+  padding: 1rem;
+}
+.scenario-toolbar .scenario-toolbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  align-items: flex-start;
+}
+.scenario-toolbar fieldset.mode-group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.scenario-toolbar legend {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  padding: 0;
+}
+.scenario-toolbar fieldset label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.scenario-toolbar fieldset label small {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.scenario-toolbar .toggle-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.scenario-toolbar .workbook-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+.scenario-toolbar .workbook-actions[hidden] { display: none; }
+.scenario-toolbar .btn-primary,
+.scenario-toolbar .btn-secondary {
+  appearance: none;
+  border: 1px solid var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  background: var(--text);
+  color: var(--bg);
+}
+.scenario-toolbar .btn-secondary {
+  background: transparent;
+  color: var(--text);
+}
+.scenario-toolbar .btn-primary:hover,
+.scenario-toolbar .btn-primary:focus,
+.scenario-toolbar .btn-secondary:hover,
+.scenario-toolbar .btn-secondary:focus {
+  background: var(--accent);
+  color: #000000;
+  border-color: var(--accent);
+  outline: none;
+}
+
+.scenario {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+  margin-top: 2rem;
+}
+.scenario:first-of-type { border-top: 0; padding-top: 0; margin-top: 1rem; }
+.scenario h2 { margin-top: 0; }
+
+.scenario-questions ol { margin: 0.5rem 0 1rem 1.25rem; }
+.scenario-workbook { margin: 0.75rem 0 0; display: none; }
+.scenario-workbook label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+}
+.scenario-workbook textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+  min-height: 7rem;
+}
+.scenario-workbook textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* details (model response, facilitator notes) */
+details.scenario-response,
+details.scenario-facilitator {
+  margin: 0.75rem 0;
+  border-left: 3px solid var(--text);
+  padding: 0.4rem 0.75rem;
+  background: var(--bg-alt);
+}
+details.scenario-facilitator {
+  border-left-color: var(--accent);
+}
+details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+details > summary::-webkit-details-marker { display: none; }
+details > summary::before {
+  content: "▸ ";
+  display: inline-block;
+  margin-right: 0.25rem;
+  transition: transform 0.15s ease;
+}
+details[open] > summary::before { content: "▾ "; }
+
+/* Mode-driven visibility.
+   In Read mode, force the model-response body to render and hide the
+   summary (no toggle needed). The default <details> behavior governs
+   Practice and Workbook modes. */
+body[data-scenario-mode="read"] details.scenario-response > .scenario-response-body { display: block; }
+body[data-scenario-mode="read"] details.scenario-response > summary { display: none; }
+
+body[data-scenario-mode="practice"] .scenario-workbook,
+body[data-scenario-mode="read"] .scenario-workbook { display: none; }
+body[data-scenario-mode="workbook"] .scenario-workbook { display: block; }
+
+/* Facilitator notes only show when toggle is on (any mode) */
+body[data-facilitator="off"] details.scenario-facilitator { display: none; }
+
+.scenario-foot-note {
+  margin: 2rem 0 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px dashed var(--border);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.workbook-printable { display: none; }
+
 /* Print / PDF tweaks */
 @media print {
   header.site, nav.primary, footer.site, .actions { display: none; }
+  .scenario-toolbar, .scenario-foot-note { display: none; }
   main { max-width: 100%; padding: 0; }
   body { font-size: 11pt; }
   a { color: black; text-decoration: underline; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; word-break: break-all; }
+  /* For PDF builds and “print to PDF” (Read-style): show every section. */
+  details.scenario-response,
+  details.scenario-facilitator {
+    border-left-width: 3px;
+    background: transparent;
+  }
+  details.scenario-response > summary,
+  details.scenario-facilitator > summary { display: none; }
+  details.scenario-response > .scenario-response-body,
+  details.scenario-facilitator > .scenario-facilitator-body { display: block !important; }
+  /* Workbook PDF: include user-typed responses as readable blocks. */
+  body[data-printing-workbook="on"] .scenario-workbook textarea { display: none; }
+  body[data-printing-workbook="on"] .workbook-printable {
+    display: block;
+    border-left: 3px solid #000;
+    padding: 0.4rem 0.75rem;
+    margin: 0.5rem 0 1rem;
+  }
+  body[data-printing-workbook="on"] .workbook-printable h4 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+  }
 }

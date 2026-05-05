@@ -21,6 +21,8 @@ Each scenario presents a situation, three to five discussion questions, and a mo
 
 **Model response.** Slow down. Within the first hour, verify uploader, location, and date through reverse-image search and basic metadata inspection ([Silverman, 2026](https://www.youtube.com/watch?v=NfHEe39AMn4)). Try to obtain a longer version. Contact the agency for the corresponding BWC clip and any incident report. If you publish before verification, label clearly: "Unverified video circulating online appears to show…" and note what is *not* known. Credit the original recorder where they have not asked for anonymity. If verification fails after a defined window, do not publish; explain that decision publicly if asked.
 
+**Facilitator notes.** Common misstep: participants frame this as "post or don't post" rather than "post when, with what framing, and after what verification." Push the group to articulate their verification floor in minutes, not in checkboxes. A useful counter-prompt: "What does your audience lose if you wait two hours?"
+
 ---
 
 ## Scenario 2 — A use-of-force BWC video the agency wants to release in a 12-second cut
@@ -34,6 +36,8 @@ Each scenario presents a situation, three to five discussion questions, and a mo
 4. What should accompany the release in writing?
 
 **Model response.** Push for release of the full sequence from activation through post-incident scene control, plus any pre-incident dispatch audio that informed the officer's approach. The 12-second cut amplifies the most ambiguous and most charged seconds without context, and the research is now clear that the same clip will be read very differently by different viewers ([Cross et al., 2025](https://doi.apa.org/doi/10.1037/lhb0000642); [Park et al., 2024](https://onlinelibrary.wiley.com/doi/10.1002/acp.70007)). Recent jurisdictional standards—such as the [NYPD's 30-day release rule for critical incidents](https://www.police1.com/law-enforcement-policies/nypd-tightens-bodycam-policy-to-30-day-release-of-most-critical-incident-videos)—favor structured, full-context release. Pair the video with a written statement listing what is visible, what is not visible, and what is still under investigation. Notify the family before public release.
+
+**Facilitator notes.** Many participants will defend the 12-second cut as "transparency." Ask them to define what transparency means here—whether it is showing the public the moment of force, or showing the public enough context to evaluate it. The Cross et al. and Park et al. findings are the strongest leverage point: identical footage produces divergent interpretations, and short cuts widen that divergence.
 
 ---
 
@@ -49,6 +53,8 @@ Each scenario presents a situation, three to five discussion questions, and a mo
 
 **Model response.** Treat absence of refusal as a low bar. Try to reach the parent or family the next day to seek explicit permission for publication and to share the intended caption and use. The [2025 OVC media guidance](https://ovc.ojp.gov/ncvrw2025/working-with-media/advocating-with-news-media) urges photographers to favor images of resilience over images of peak grief, and to avoid publishing victims in distress when alternatives exist. If publication proceeds without consent because of a clear and overriding public interest, document the editorial reasoning and be ready to explain it.
 
+**Facilitator notes.** This scenario tends to surface a generational split: younger participants may treat consent as binary while veteran photojournalists may invoke "public space, public photography." Both framings miss the point that publication and capture are separate decisions. Use the OVC guidance to refocus the group on the difference.
+
 ---
 
 ## Scenario 4 — A suspected AI-generated "crime scene" image
@@ -61,6 +67,8 @@ Each scenario presents a situation, three to five discussion questions, and a mo
 3. If you publish and it later turns out to be synthetic, what is the proper correction?
 
 **Model response.** Verify the photographer's identity through prior published work and direct contact. Ask for the original file with embedded metadata. Run reverse-image search across multiple engines and check for prior appearances. If verification cannot be completed, do not publish; an unverified striking image is exactly the profile of a synthetic insertion. If a synthetic image slips through, the [SPJ-aligned 2025 guidance](https://thespjnews.org/2025/10/17/truth-and-empathy-guide-photojournalism-ethics/) is clear: publish a labeled correction stating exactly what was AI-generated, take the image offline, and review newsroom policy.
+
+**Facilitator notes.** A productive prompt: "What would your newsroom's correction look like in plain language?" Drafting the correction in advance often surfaces policy gaps. Note that AI-generated content does not always require a striking image—often a clear, plainly-credited file photo is the better choice when verification stalls.
 
 ---
 
@@ -76,6 +84,8 @@ Each scenario presents a situation, three to five discussion questions, and a mo
 
 **Model response.** In most U.S. jurisdictions, members of the public have a First Amendment right to record in publicly accessible portions of government buildings ([Justia summary](https://www.justia.com/criminal/procedure/right-to-record-police-officers/); [Hall Booth Smith analysis](https://hallboothsmith.com/citizen-video-audits-know-their-rights-and-yours/)). The agency may post and enforce neutral rules (no entry beyond a marked line, no recording of secure work areas, no obstruction of public business) but cannot order someone to stop recording the lobby itself simply because they are recording. The desk officer should remain calm, restate any specific access rule that applies, document the interaction (often on the agency's own BWC if policy permits), and avoid escalation. An arrest predicated on the recording itself is highly likely to be challenged.
 
+**Facilitator notes.** Police-side participants often frame auditors as adversarial. Acknowledge this candidly, then redirect to the operational question: how does the agency train desk staff to remain calm, articulate the rule that applies, and document the encounter without escalating? A practical exercise is to script the first 30 seconds of the desk officer's response.
+
 ---
 
 ## Scenario 6 — A domestic and family violence call captured on BWC
@@ -88,6 +98,8 @@ Each scenario presents a situation, three to five discussion questions, and a mo
 3. What risks does the footage create for the victim?
 
 **Model response.** As [Iliadis and Harris (2024)](https://www.aic.gov.au/crg/reports/crg-3520-21) and [Harris (2020)](https://www.tandfonline.com/doi/full/10.1080/10345329.2020.1831730) have shown, BWC footage in domestic and family violence cases captures an incident-bounded slice of an ongoing pattern. It can validate the victim's experience, but it can also be used by perpetrators—who may present as calm to the camera—to cast doubt on the victim and even contribute to misidentification of the primary aggressor. Officers should explicitly contextualize what the footage shows and what they observed before activation. Prosecutors and reviewers should treat the footage as one input alongside history, statements, injuries, and patterns, not as a stand-alone arbiter.
+
+**Facilitator notes.** This scenario lands hardest with participants who have over-trusted footage in past cases. Iliadis and Harris are useful precisely because they show that misidentification of the primary aggressor is a *documented* failure mode, not a theoretical concern. Ask the group to articulate how their workflow would change if footage alone were treated as insufficient.
 
 ---
 
@@ -102,6 +114,8 @@ Each scenario presents a situation, three to five discussion questions, and a mo
 
 **Model response.** Republication is a separate ethical decision from initial publication, and the calculus rarely favors graphic imagery on anniversaries. The family bears a foreseeable, repeated harm; the public interest is usually well served by a less graphic image (a portrait, a memorial photo, a courtroom image) plus careful written reporting. If the graphic image is genuinely necessary—for example, because new evidence has changed the public understanding of the case—document the editorial reasoning and notify the family in advance.
 
+**Facilitator notes.** This is a good scenario for surfacing newsroom power dynamics: photo editors, reporters, and public-safety editors often disagree, and the disagreement is healthy. A useful prompt: "Who in your newsroom owns the republication call, and who is consulted?"
+
 ---
 
 ## Scenario 8 — Officer review of footage before writing a report
@@ -114,6 +128,8 @@ Each scenario presents a situation, three to five discussion questions, and a mo
 3. What policy options exist, and what are the tradeoffs?
 
 **Model response.** [Adams, MacDougall and Paterson (2020)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7743977/) found "camera conformity": officers who reviewed footage before writing statements correctly removed errors but also excluded *true* details that the camera did not capture. This argues against a blanket pre-review rule. A common compromise is a two-step report: officers first write a memory-only narrative (sealed), then review footage and write a supplementary report noting what the footage clarifies, contradicts, or adds. Whatever the agency chooses, the policy should be explicit, applied uniformly, and disclosed.
+
+**Facilitator notes.** This scenario can stall on a false binary (always allow vs. never allow). Push toward design questions: when does review happen, what is sealed, what is disclosed to oversight, and how is the public informed of the policy? The Adams et al. finding about excluding *true* details is the most counterintuitive result and worth dwelling on.
 
 ---
 

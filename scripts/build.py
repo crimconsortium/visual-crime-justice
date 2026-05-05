@@ -47,6 +47,139 @@ THEME_PRE_SCRIPT = """<script>
   })();
 </script>"""
 
+SCENARIO_TOOLBAR_HTML = """<aside class="scenario-toolbar" aria-label="Scenario pack mode">
+  <div class="scenario-toolbar-inner">
+    <fieldset class="mode-group">
+      <legend>How do you want to use this pack?</legend>
+      <label><input type="radio" name="scenario-mode" value="read" checked> <span>Read</span> <small>everything visible</small></label>
+      <label><input type="radio" name="scenario-mode" value="practice"> <span>Practice</span> <small>think first; reveal model response</small></label>
+      <label><input type="radio" name="scenario-mode" value="workbook"> <span>Workbook</span> <small>type your reasoning; download a PDF</small></label>
+    </fieldset>
+    <div class="toggle-group">
+      <label><input type="checkbox" id="facilitator-toggle"> Show facilitator notes</label>
+    </div>
+    <div class="workbook-actions" hidden>
+      <button type="button" id="download-workbook" class="btn-primary">Download my workbook (PDF)</button>
+      <button type="button" id="reset-workbook" class="btn-secondary">Reset all responses</button>
+    </div>
+  </div>
+</aside>"""
+
+SCENARIO_FOOTER_HTML = """<aside class="scenario-foot-note">
+  <p>Your responses are saved in this browser only. They are not sent anywhere.
+  Switch to <em>Workbook</em> at the top of this page to type your reasoning, then
+  download a PDF that combines your responses with the model responses and citations.</p>
+</aside>"""
+
+SCENARIO_SCRIPT = """<script>
+(function () {
+  var STORAGE_PREFIX = 'scenario-workbook:';
+  var MODE_KEY = 'scenario-mode';
+  var FACIL_KEY = 'scenario-facilitator';
+  var root = document.body;
+
+  // --- Mode + toggles ---
+  function applyMode(mode) {
+    root.setAttribute('data-scenario-mode', mode);
+    var actions = document.querySelector('.workbook-actions');
+    if (actions) actions.hidden = (mode !== 'workbook');
+    var radios = document.querySelectorAll('input[name="scenario-mode"]');
+    radios.forEach(function (r) { r.checked = (r.value === mode); });
+    // In Read mode every model response is open; in Practice/Workbook the
+    // user opts in by clicking the summary. <details> children are always
+    // hidden by the browser unless [open] is set, so toggle it explicitly.
+    document.querySelectorAll('details.scenario-response').forEach(function (d) {
+      if (mode === 'read') {
+        d.setAttribute('open', '');
+      } else {
+        d.removeAttribute('open');
+      }
+    });
+  }
+  function applyFacilitator(on) {
+    root.setAttribute('data-facilitator', on ? 'on' : 'off');
+    var cb = document.getElementById('facilitator-toggle');
+    if (cb) cb.checked = !!on;
+  }
+
+  var savedMode = null;
+  var savedFacil = false;
+  try {
+    savedMode = localStorage.getItem(MODE_KEY);
+    savedFacil = localStorage.getItem(FACIL_KEY) === '1';
+  } catch (e) {}
+  applyMode(savedMode || 'read');
+  applyFacilitator(savedFacil);
+
+  document.querySelectorAll('input[name="scenario-mode"]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      applyMode(r.value);
+      try { localStorage.setItem(MODE_KEY, r.value); } catch (e) {}
+    });
+  });
+  var facilCb = document.getElementById('facilitator-toggle');
+  if (facilCb) {
+    facilCb.addEventListener('change', function () {
+      applyFacilitator(facilCb.checked);
+      try { localStorage.setItem(FACIL_KEY, facilCb.checked ? '1' : '0'); } catch (e) {}
+    });
+  }
+
+  // --- Workbook persistence ---
+  document.querySelectorAll('textarea[data-scenario-id]').forEach(function (ta) {
+    var key = STORAGE_PREFIX + ta.dataset.scenarioId;
+    try {
+      var saved = localStorage.getItem(key);
+      if (saved) ta.value = saved;
+    } catch (e) {}
+    ta.addEventListener('input', function () {
+      try { localStorage.setItem(key, ta.value); } catch (e) {}
+    });
+  });
+
+  // --- Reset all responses ---
+  var resetBtn = document.getElementById('reset-workbook');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function () {
+      if (!confirm('Erase all of your saved responses? This cannot be undone.')) return;
+      document.querySelectorAll('textarea[data-scenario-id]').forEach(function (ta) {
+        ta.value = '';
+        try { localStorage.removeItem(STORAGE_PREFIX + ta.dataset.scenarioId); } catch (e) {}
+      });
+    });
+  }
+
+  // --- Download workbook PDF (uses the browser's print-to-PDF) ---
+  var dlBtn = document.getElementById('download-workbook');
+  if (dlBtn) {
+    dlBtn.addEventListener('click', function () {
+      // Render each user response into a sibling div so it prints alongside.
+      document.querySelectorAll('textarea[data-scenario-id]').forEach(function (ta) {
+        var existing = ta.parentNode.querySelector('.workbook-printable');
+        if (existing) existing.remove();
+        var div = document.createElement('div');
+        div.className = 'workbook-printable';
+        var h = document.createElement('h4');
+        h.textContent = 'Your response';
+        var p = document.createElement('p');
+        p.textContent = ta.value.trim() ? ta.value : '(no response written)';
+        div.appendChild(h);
+        div.appendChild(p);
+        ta.parentNode.appendChild(div);
+      });
+      // Mark body so print CSS shows everything (including model + facilitator).
+      root.setAttribute('data-printing-workbook', 'on');
+      window.print();
+      // Cleanup after print dialog closes.
+      setTimeout(function () {
+        root.removeAttribute('data-printing-workbook');
+        document.querySelectorAll('.workbook-printable').forEach(function (el) { el.remove(); });
+      }, 1000);
+    });
+  }
+})();
+</script>"""
+
 THEME_TOGGLE_SCRIPT = """<script>
   (function () {
     var btn = document.getElementById('theme-toggle');
@@ -122,6 +255,16 @@ def page(title: str, body_html: str, current: str, description: str) -> str:
 
 def md_to_html(md_text: str) -> tuple[str, str]:
     """Return (html_body, first_h1_title)."""
+    # Python-Markdown's `sane_lists` only kicks in if the list is preceded by a
+    # blank line. The scenario-pack source intentionally writes the label and
+    # list adjacent (`**Discussion questions.**\n1. ...`) for readability, so
+    # we insert a blank line after any bold-label paragraph that is followed
+    # immediately by a numbered or bulleted list item.
+    md_text = re.sub(
+        r"(\*\*[^*\n]+\*\*)\n(?=(?:\d+\.|[-*+])\s)",
+        r"\1\n\n",
+        md_text,
+    )
     md = markdown.Markdown(extensions=["extra", "toc", "sane_lists"])
     body = md.convert(md_text)
     # Pull out first H1 to use as title; remove from body to avoid duplicate
@@ -133,11 +276,18 @@ def md_to_html(md_text: str) -> tuple[str, str]:
 def build_guide(md_path: Path, out_name: str, description: str) -> None:
     md_text = md_path.read_text(encoding="utf-8")
     body_html, title = md_to_html(md_text)
+    is_scenario = out_name == "scenario-pack.html"
+    if is_scenario:
+        from scenario_processor import process as process_scenarios
+        body_html = process_scenarios(body_html)
+        body_html = SCENARIO_TOOLBAR_HTML + body_html + SCENARIO_FOOTER_HTML
     body_html = (
         f'<p class="meta">Last updated {UPDATED} · '
         f'<a href="pdfs/{out_name.replace(".html", ".pdf")}">Download PDF</a></p>'
         + body_html
     )
+    if is_scenario:
+        body_html += SCENARIO_SCRIPT
     html = page(title, body_html, current=out_name, description=description)
     (OUT_DIR / out_name).write_text(html, encoding="utf-8")
     # PDF — same HTML, baseUrl points to repo root so CSS resolves
